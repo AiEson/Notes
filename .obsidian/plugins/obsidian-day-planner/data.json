@@ -1,0 +1,16 @@
+{
+  "customFolder": "Day Planners",
+  "mode": 1,
+  "mermaid": false,
+  "notesToDates": [
+    {
+      "notePath": "日记/2022-01-07.md",
+      "date": "Fri Jan 07 2022"
+    }
+  ],
+  "completePastItems": true,
+  "circularProgress": false,
+  "nowAndNextInStatusBar": true,
+  "showTaskNotification": false,
+  "timelineZoomLevel": 4
+}

@@ -1,0 +1,184 @@
+{
+  "main": {
+    "id": "ad35b96a9faccf48",
+    "type": "split",
+    "children": [
+      {
+        "id": "0e737c83125e103c",
+        "type": "leaf",
+        "state": {
+          "type": "excalidraw",
+          "state": {
+            "file": "Excalidraw/Drawing 2022-01-23 21.03.25.excalidraw.md"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "62d369d026d3fd44",
+    "type": "split",
+    "children": [
+      {
+        "id": "e4d0d0b119ef5cf2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "aa3b4900cf4b3927",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "fd17736ce0512626",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "dc8fda5cb2cb2288",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 183,
+    "collapsed": true
+  },
+  "right": {
+    "id": "5176f03b1d6d2c7d",
+    "type": "split",
+    "children": [
+      {
+        "id": "b599e1c786b2bf3f",
+        "type": "tabs",
+        "dimension": 37.538148524923706,
+        "children": [
+          {
+            "id": "63bae1c7b02fbf68",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Excalidraw/Drawing 2022-01-23 21.03.25.excalidraw.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "59598c9ab15696e8",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Excalidraw/Drawing 2022-01-23 21.03.25.excalidraw.md"
+              }
+            }
+          },
+          {
+            "id": "ba1e18b5f29e1d64",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "2e527df07a1efcd4",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
+          },
+          {
+            "id": "430443216a844c6a",
+            "type": "leaf",
+            "state": {
+              "type": "todo",
+              "state": {}
+            }
+          },
+          {
+            "id": "24b1d428be32bda8",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
+          },
+          {
+            "id": "dc8de3994df579d6",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Excalidraw/Drawing 2022-01-23 21.03.25.excalidraw.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          }
+        ],
+        "currentTab": 4
+      },
+      {
+        "id": "0a2ff622959cea94",
+        "type": "tabs",
+        "dimension": 62.4618514750763,
+        "children": [
+          {
+            "id": "9632c7ab96ccaa3a",
+            "type": "leaf",
+            "state": {
+              "type": "timeline",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 316.3333435058594,
+    "collapsed": true
+  },
+  "active": "0e737c83125e103c",
+  "lastOpenFiles": [
+    "Excalidraw/Drawing 2022-01-23 21.03.25.excalidraw.md",
+    "Excalidraw/Drawing 2022-01-23 20.55.50.excalidraw.md",
+    "Excalidraw/Drawing 2022-01-23 20.38.49.excalidraw.md",
+    "Excalidraw/Drawing 2022-01-20 21.53.42.excalidraw.md",
+    "Excalidraw/Drawing 2022-01-20 21.53.42.excalidraw.svg",
+    "Excalidraw/Drawing 2022-01-21 01.10.24.excalidraw.png",
+    "Excalidraw/Drawing 2022-01-21 01.10.24.excalidraw.svg",
+    "Excalidraw/Drawing 2022-01-22 22.07.30.excalidraw.png",
+    "Excalidraw/Drawing 2022-01-20 00.28.32.excalidraw.md",
+    "Excalidraw/Drawing 2022-01-18 10.47.18.excalidraw.md"
+  ]
+}
