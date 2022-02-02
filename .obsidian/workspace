@@ -7,11 +7,9 @@
         "id": "0e737c83125e103c",
         "type": "leaf",
         "state": {
-          "type": "markdown",
+          "type": "excalidraw",
           "state": {
-            "file": "深度学习/需要学习的内容.md",
-            "mode": "source",
-            "source": false
+            "file": "Excalidraw/Drawing 2022-02-02 16.19.08.excalidraw.md"
           }
         }
       }
@@ -61,7 +59,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 183
+    "width": 165,
+    "collapsed": true
   },
   "right": {
     "id": "5176f03b1d6d2c7d",
@@ -78,7 +77,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "深度学习/需要学习的内容.md",
+                "file": "Excalidraw/Drawing 2022-02-02 16.19.08.excalidraw.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -95,7 +94,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "深度学习/需要学习的内容.md"
+                "file": "Excalidraw/Drawing 2022-02-02 16.19.08.excalidraw.md"
               }
             }
           },
@@ -140,7 +139,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "深度学习/需要学习的内容.md",
+                "file": "Excalidraw/Drawing 2022-02-02 16.19.08.excalidraw.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -171,6 +170,7 @@
   },
   "active": "0e737c83125e103c",
   "lastOpenFiles": [
+    "Excalidraw/Drawing 2022-02-02 16.19.08.excalidraw.md",
     "深度学习/需要学习的内容.md",
     "Excalidraw/Drawing 2022-01-23 21.03.25.excalidraw.md",
     "Excalidraw/Drawing 2022-01-23 20.55.50.excalidraw.md",
@@ -179,7 +179,6 @@
     "Excalidraw/Drawing 2022-01-20 21.53.42.excalidraw.svg",
     "Excalidraw/Drawing 2022-01-21 01.10.24.excalidraw.png",
     "Excalidraw/Drawing 2022-01-21 01.10.24.excalidraw.svg",
-    "Excalidraw/Drawing 2022-01-22 22.07.30.excalidraw.png",
-    "Excalidraw/Drawing 2022-01-20 00.28.32.excalidraw.md"
+    "Excalidraw/Drawing 2022-01-22 22.07.30.excalidraw.png"
   ]
 }
