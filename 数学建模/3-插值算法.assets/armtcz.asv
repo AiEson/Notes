@@ -1,0 +1,5 @@
+x = -pi:pi;
+y = sin(x);
+new_x = -pi:0.01:pi;
+p = pchip(x, y, new_x);
+plot(x, y, 'o-', new_x, p, 'r-', -pi::pi)
