@@ -1,0 +1,7 @@
+clear;clc
+syms x;
+y = (1 / sqrt(2 * pi)) * exp( (-(x^2 / 2)));
+xx = -100:0.01:100;
+function r = f(x)
+r = int(y, -inf, x)
+plot(xx,  );
