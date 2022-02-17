@@ -1,0 +1,966 @@
+<!doctype html>
+<html style='font-size:22px !important'>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+body {
+    color: var(--text-color);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6rem;
+    letter-spacing: 0;
+    overflow-x: hidden;
+}
+/* 日间 */
+/* light */
+:root {
+    --title-color: #6f79ff;
+    --text-color: #353535;
+    --light-text-color: #666666;
+    --link-color: #55d3e4;
+    --code-color: #937fce;
+
+    --shadow-color: rgba(128, 107, 192, 0.1);
+    --blue: #559CE4;
+    --Mica: #f3f3f3;
+    --border: rgb(179, 179, 179);
+    --shadow: 0.4rem 0.8rem 1.6rem var(--shadow-color);
+
+    --table-background-color: #fcfcfc;
+
+    --side-bar-bg-color: var(--Mica);
+    --control-text-color: var(var(--light-text-color));
+    --active-file-text-color: var(--title-color);
+    --active-file-bg-color: var(--shadow-color);
+    --item-hover-bg-color: var(--shadow-color);
+    --active-file-border-color: var(var(--title-color));
+}
+:root {
+    --base-font: "思源宋体 CN Medium", "Helvetica Neue", "Noto Sans", -apple-system, Ubuntu,
+    "Microsoft YaHei", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans",
+    "Noto Sans CJK SC", "PingFang SC", "Hiragino Sans GB", "Source Han Sans SC",
+    "Source Han Sans CN", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti",
+    SimHei, "WenQuanYi Zen Hei Sharp", "Source Sans Pro", sans-serif;
+    --title-font: "思源宋体 CN Medium", "EB Garamond", Georgia, "Noto Serif", "Noto Serif CJK SC",
+    "Nimbus Roman No9 L", "Songti SC", "Source Han Serif SC",
+    "Source Han Serif CN", STSong, "AR PL New Sung", "AR PL SungtiL GB", NSimSun,
+    SimSun, "TW\-Sung", "WenQuanYi Bitmap Song", "AR PL UMing CN",
+    "AR PL UMing HK", "AR PL UMing TW", "AR PL UMing TW MBE", PMingLiU, MingLiU,
+    "Ubuntu", "Source Sans Pro", serif;
+    --monospace: "JetBrains Mono", "Fira Code", "Cascadia Code", "Sarasa Term SC",
+    Monaco, "Deja Vu Sans Mono", Consolas, "Lucida Console", "Andale Mono",
+    "Roboto Mono", Courier, Monospace !important;
+}
+  
+/* 打印 */
+/* print */
+@media print {
+    html {
+        font-size: 0.9rem;
+    }
+
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+
+    pre {
+        word-wrap: break-word;
+    }
+
+    #write {
+        max-width: 100%;
+    }
+
+    @page {
+        size: A4; /* PDF A4 */
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: initial;
+}
+
+
+/* 页边距 和 页面大小 */
+#write {
+    font-family: var(--base-font);
+    /* max-width: 914px; */
+    margin: 0 auto;
+    padding: 1rem 4rem;
+    padding-bottom: 100px;
+}
+
+#write p {
+    line-height: 1.6rem;
+    word-spacing: 0.05rem;
+}
+
+body > *:first-child {
+    margin-top: 0 !important;
+}
+
+body > *:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* 超链接 */
+/* hyperlink */
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+#write a {
+    border-bottom: none;
+    background: linear-gradient(to bottom, #3C8CE7, #00EAFF);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+#write a:hover {
+    border-bottom: 1px solid var(--link-color);
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+.md-content {
+    color: var(--light-text-color);
+}
+
+/* 标题 */
+/* title */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: normal;
+    line-height: 1.3;
+    cursor: text;
+    color: var(--title-color);
+    font-family: var(--title-font);
+}
+
+#write h1,
+#write h2,
+#write h3,
+#write h4,
+#write h5,
+#write h6 {
+    background: linear-gradient(to bottom, #43CBFF, #9708CC);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.2em;
+    margin-bottom: 2rem;
+}
+
+h1:after {
+    content: "";
+    display: block;
+    margin: 0.2em auto 0;
+    width: 6rem;
+    height: 2.4px;
+    border-bottom: 2px solid var(--title-color);
+}
+
+h2 {
+    padding-left: 0.4em;
+    font-size: 2em;
+    border-left: 0.4em solid var(--title-color);
+    border-bottom: 1px solid var(--title-color);
+}
+
+h3 {
+    font-size: 2em;
+}
+
+h4 {
+    font-size: 1.7em;
+}
+
+h5 {
+    font-size: 1.4em;
+}
+
+h6 {
+    font-size: 1.2em;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table {
+    margin: 0.8em 0;
+}
+
+/* horizontal rule */
+hr {
+    margin: 1em auto;
+    border: 0;
+    border-top: 1px solid var(--border);
+}
+
+/* 列表 */
+li > ol,
+li > ul {
+    margin: 0 0;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+ul,
+ol {
+    padding-left: 2rem;
+}
+
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+
+#write ol li,
+ul li {
+    padding-left: 0.1rem;
+}
+
+/* 引用 */
+blockquote {
+    border-left: 0.2em solid var(--blue);
+    padding-left: 1em;
+    color: var(--light-text-color);
+    font-family: var(--base-font);
+}
+
+/* 表格 */
+table {
+    margin-bottom: 1.25rem;
+}
+
+table th,
+table td {
+    padding: 8px;
+    line-height: 1.25rem;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+}
+
+table th {
+    font-weight: bold;
+}
+
+table thead th {
+    vertical-align: middle;
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: var(--table-background-color);
+}
+
+/* 文字样式 */
+strong,
+em,
+code,
+tt,
+mark {
+    padding: 0 4px;
+    border-radius: 8px 8px 8px 8px;
+    margin: 0 2px;
+    color: var(--text-color);
+    background-color: var(--Mica);
+}
+
+/* 粗体 */
+#write strong {
+    font-weight: bold;
+
+}
+
+/* 斜体 */
+#write em {
+
+}
+
+/* 行间公式 */
+/* inline code */
+#write code,
+tt {
+    font-family: var(--monospace);
+    color: var(--code-color);
+    margin: 0 2px;
+}
+
+#write .md-footnote {
+    color: var(--code-color);
+    background-color: #f4f2f9;
+}
+
+/* 高亮 */
+/* highlight */
+#write mark {
+    background-color: #FDEEBB;
+    color: #e9781e;
+}
+
+#write del {
+    padding: 1px 2px;
+}
+
+.md-task-list-item > input {
+    margin-left: -1.3em;
+}
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: var(--Mica);
+    border: 0;
+    border-radius: 20px 20px 20px 20px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block > .code-tooltip {
+    bottom: 0.375rem;
+}
+
+/* 图片 */
+/* imag */
+.md-image > .md-meta {
+    border-radius: 20px 20px 20px 20px;
+    font-family: var(--monospace);
+    padding: 2px 0 0 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+/* 图片靠左显示 */
+/* p .md-image:only-child {
+  width: auto;
+  text-align: left;
+  margin-left: 2rem;
+} */
+
+/* 写![shadow-...]() 显示图片阴影 */
+img[alt|="shadow"] {
+    box-shadow: 0.4rem 0.8rem 1.6rem var(--shadow-color);
+}
+
+/* 目录 */
+/* TOC */
+#write .md-toc {
+    background-color: var(--Mica);
+    border-radius: 20px 20px 20px 20px;
+    padding: 2px 4px;
+    margin: 0 2px;
+}
+
+#write a.md-toc-inner {
+    line-height: 1.5;
+    white-space: pre-line;
+    border-bottom: none;
+    font-size: 1rem;
+}
+
+.md-toc-h1 {
+    display: none;
+}
+
+#write .md-toc-h2 .md-toc-inner {
+    font-size: 1.2rem;
+}
+
+#write .md-toc-h3 .md-toc-inner {
+    font-size: 1.1rem;
+}
+
+#write .md-toc-item:before {
+    display: block;
+    color: rgb(65, 131, 196);
+}
+
+#write .md-toc-h2 .md-toc-inner {
+    font-weight: bold;
+}
+
+.md-toc-h5,
+.md-toc-h6 {
+    display: none;
+}
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+    font-family: var(--base-font);
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #e6f0fe;
+}
+
+/* 代码段 背景 */
+pre {
+    --select-text-bg-color: #e4d4f5;
+}
+
+/* border and bg */
+.md-fences {
+    border-radius: 20px 20px 20px 20px;
+    background: var(--Mica);
+    backdrop-filter: blur(15px);
+}
+
+#write pre.md-fences {
+    display: block;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: var(--shadow);
+}
+
+.cm-s-inner {
+    padding: 0.25rem;
+    border-radius: 20px 20px 20px 20px;
+}
+
+.cm-s-inner.CodeMirror,
+.cm-s-inner .CodeMirror-gutters {
+    color: #3a3432 !important;
+    border: none;
+}
+
+.cm-s-inner .CodeMirror-gutters {
+    color: #6d8a88;
+}
+
+.cm-s-inner .CodeMirror-linenumber {
+    padding: 0 0.1rem 0 0.3rem;
+    color: #b8b5b4;
+}
+
+.cm-s-inner .CodeMirror-line::selection,
+.cm-s-inner .CodeMirror-line::-moz-selection,
+.cm-s-inner .CodeMirror-line > span::selection,
+.cm-s-inner .CodeMirror-line > span::-moz-selection,
+.cm-s-inner .CodeMirror-line > span > span::selection,
+.cm-s-inner .CodeMirror-line > span > span::-moz-selection {
+    background: var(--shadow-color);
+}
+
+.md-fences.md-focus .cm-s-inner .CodeMirror-activeline-background {
+    background: var(--shadow-color);
+}
+
+.cm-s-inner .CodeMirror-matchingbracket {
+    text-decoration: underline;
+    color: #a34e8f !important;
+}
+
+#fences-auto-suggest .active {
+    background: #ddd;
+}
+
+.cm-s-inner span.cm-comment {
+    color: #9daab6;
+}
+
+.cm-s-inner span.cm-builtin {
+    color: #0451a5;
+}
+
+/* language tip */
+#write .code-tooltip {
+    border: 1px solid var(--border);
+}
+
+.auto-suggest-container {
+    border-color: #b4b4b4;
+}
+
+.auto-suggest-container .autoComplt-hint.active {
+    background: #b4b4b4;
+    color: inherit;
+}
+
+/* task list */
+#write .md-task-list-item > input {
+    -webkit-appearance: initial;
+    display: block;
+    position: absolute;
+    border: 1px solid #b4b4b4;
+    border-radius: 20px 20px 20px 20px;
+    margin-top: 0.3rem;
+    height: 1rem;
+    width: 1rem;
+    transition: background 0.3s;
+}
+
+#write .md-task-list-item > input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+#write .md-task-list-item > input:hover {
+    background: #ddd;
+}
+
+#write .md-task-list-item > input[checked]::before {
+    content: "";
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    height: 60%;
+    width: 2px;
+    transform: rotate(40deg);
+    background: #333;
+}
+
+#write .md-task-list-item > input[checked]::after {
+    content: "";
+    position: absolute;
+    top: 46%;
+    left: 25%;
+    height: 30%;
+    width: 2px;
+    transform: rotate(-40deg);
+    background: #333;
+}
+
+#write .md-task-list-item > p {
+    transition: color 0.3s, opacity 0.3s;
+}
+
+#write .md-task-list-item.task-list-done > p {
+    color: #b4b4b4;
+    text-decoration: line-through;
+}
+
+#write .md-task-list-item.task-list-done > p > .md-emoji {
+    opacity: 0.5;
+}
+
+#write .md-task-list-item.task-list-done > p > .md-link > a {
+    opacity: 0.6;
+}
+
+
+/* 侧栏 */
+/* sidebar */
+#typora-sidebar,
+.typora-node #typora-sidebar {
+    box-shadow: 3px 0px 10px var(--shadow-color);
+    color: var(--text-color);
+}
+
+.sidebar-content-content {
+    font-size: 0.9rem;
+}
+
+/* 选中的文字 */
+::selection {
+    background: #ccc;
+    color: var(--blue);
+}
+
+::-moz-selection {
+    background: #ccc;
+    color: var(--blue);
+}
+
+::-webkit-selection {
+    background: #ccc;
+    color: var(--blue);
+}
+
+
+
+
+
+
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						}
+</style><title>5.3-附件 t 分布表</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='t-分布表t-distribution-table）'><span>t 分布表（t-distribution Table）</span></h1><figure><table><thead><tr><th style='text-align:center;' ><span>df \ </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.92ex" height="1.773ex" role="img" focusable="false" viewBox="0 -626 848.5 783.8" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.357ex;"><defs><path id="MJX-21-TEX-I-1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path><path id="MJX-21-TEX-I-1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D461" xlink:href="#MJX-21-TEX-I-1D461"></use></g><g data-mml-node="mi" transform="translate(394,-150) scale(0.707)"><use data-c="1D465" xlink:href="#MJX-21-TEX-I-1D465"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>t</mi><mi>x</mi></msub></math></mjx-assistive-mml></mjx-container><script type="math/tex">t_x</script></th><th style='text-align:center;' ><span>0.9</span></th><th style='text-align:center;' ><span>0.95</span></th><th style='text-align:center;' ><span>0.975</span></th><th style='text-align:center;' ><span>0.99</span></th><th style='text-align:center;' ><span>0.995</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>3.0777</span></td><td style='text-align:center;' ><span>6.3138</span></td><td style='text-align:center;' ><span>12.7062</span></td><td style='text-align:center;' ><span>31.8207</span></td><td style='text-align:center;' ><span>63.6574</span></td></tr><tr><td style='text-align:center;' ><span>2</span></td><td style='text-align:center;' ><span>1.8856</span></td><td style='text-align:center;' ><span>2.9200</span></td><td style='text-align:center;' ><span>4.3027</span></td><td style='text-align:center;' ><span>6.9646</span></td><td style='text-align:center;' ><span>9.9248</span></td></tr><tr><td style='text-align:center;' ><span>3</span></td><td style='text-align:center;' ><span>1.6377</span></td><td style='text-align:center;' ><span>2.3534</span></td><td style='text-align:center;' ><span>3.1824</span></td><td style='text-align:center;' ><span>4.5407</span></td><td style='text-align:center;' ><span>5.8409</span></td></tr><tr><td style='text-align:center;' ><span>4</span></td><td style='text-align:center;' ><span>1.5332</span></td><td style='text-align:center;' ><span>2.1318</span></td><td style='text-align:center;' ><span>2.7764</span></td><td style='text-align:center;' ><span>3.7469</span></td><td style='text-align:center;' ><span>4.6041</span></td></tr><tr><td style='text-align:center;' ><span>5</span></td><td style='text-align:center;' ><span>1.4759</span></td><td style='text-align:center;' ><span>2.0150</span></td><td style='text-align:center;' ><span>2.5706</span></td><td style='text-align:center;' ><span>3.3649</span></td><td style='text-align:center;' ><span>4.0322</span></td></tr><tr><td style='text-align:center;' ><span>6</span></td><td style='text-align:center;' ><span>1.4398</span></td><td style='text-align:center;' ><span>1.9432</span></td><td style='text-align:center;' ><span>2.4469</span></td><td style='text-align:center;' ><span>3.1427</span></td><td style='text-align:center;' ><span>3.7074</span></td></tr><tr><td style='text-align:center;' ><span>7</span></td><td style='text-align:center;' ><span>1.4149</span></td><td style='text-align:center;' ><span>1.8946</span></td><td style='text-align:center;' ><span>2.3646</span></td><td style='text-align:center;' ><span>2.9980</span></td><td style='text-align:center;' ><span>3.4995</span></td></tr><tr><td style='text-align:center;' ><span>8</span></td><td style='text-align:center;' ><span>1.3968</span></td><td style='text-align:center;' ><span>1.8595</span></td><td style='text-align:center;' ><span>2.3060</span></td><td style='text-align:center;' ><span>2.8965</span></td><td style='text-align:center;' ><span>3.3554</span></td></tr><tr><td style='text-align:center;' ><span>9</span></td><td style='text-align:center;' ><span>1.3830</span></td><td style='text-align:center;' ><span>1.8331</span></td><td style='text-align:center;' ><span>2.2622</span></td><td style='text-align:center;' ><span>2.8214</span></td><td style='text-align:center;' ><span>3.2498</span></td></tr><tr><td style='text-align:center;' ><span>10</span></td><td style='text-align:center;' ><span>1.3722</span></td><td style='text-align:center;' ><span>1.8125</span></td><td style='text-align:center;' ><span>2.2281</span></td><td style='text-align:center;' ><span>2.7638</span></td><td style='text-align:center;' ><span>3.1693</span></td></tr><tr><td style='text-align:center;' ><span>11</span></td><td style='text-align:center;' ><span>1.3634</span></td><td style='text-align:center;' ><span>1.7959</span></td><td style='text-align:center;' ><span>2.2010</span></td><td style='text-align:center;' ><span>2.7181</span></td><td style='text-align:center;' ><span>3.1058</span></td></tr><tr><td style='text-align:center;' ><span>12</span></td><td style='text-align:center;' ><span>1.3562</span></td><td style='text-align:center;' ><span>1.7823</span></td><td style='text-align:center;' ><span>2.1788</span></td><td style='text-align:center;' ><span>2.6810</span></td><td style='text-align:center;' ><span>3.0545</span></td></tr><tr><td style='text-align:center;' ><span>13</span></td><td style='text-align:center;' ><span>1.3502</span></td><td style='text-align:center;' ><span>1.7709</span></td><td style='text-align:center;' ><span>2.1604</span></td><td style='text-align:center;' ><span>2.6503</span></td><td style='text-align:center;' ><span>3.0123</span></td></tr><tr><td style='text-align:center;' ><span>14</span></td><td style='text-align:center;' ><span>1.3450</span></td><td style='text-align:center;' ><span>1.7613</span></td><td style='text-align:center;' ><span>2.1448</span></td><td style='text-align:center;' ><span>2.6245</span></td><td style='text-align:center;' ><span>2.9768</span></td></tr><tr><td style='text-align:center;' ><span>15</span></td><td style='text-align:center;' ><span>1.3406</span></td><td style='text-align:center;' ><span>1.7531</span></td><td style='text-align:center;' ><span>2.1315</span></td><td style='text-align:center;' ><span>2.6025</span></td><td style='text-align:center;' ><span>2.9467</span></td></tr><tr><td style='text-align:center;' ><span>16</span></td><td style='text-align:center;' ><span>1.3368</span></td><td style='text-align:center;' ><span>1.7459</span></td><td style='text-align:center;' ><span>2.1199</span></td><td style='text-align:center;' ><span>2.5835</span></td><td style='text-align:center;' ><span>2.9208</span></td></tr><tr><td style='text-align:center;' ><span>17</span></td><td style='text-align:center;' ><span>1.3334</span></td><td style='text-align:center;' ><span>1.7396</span></td><td style='text-align:center;' ><span>2.1098</span></td><td style='text-align:center;' ><span>2.5669</span></td><td style='text-align:center;' ><span>2.8982</span></td></tr><tr><td style='text-align:center;' ><span>18</span></td><td style='text-align:center;' ><span>1.3304</span></td><td style='text-align:center;' ><span>1.7341</span></td><td style='text-align:center;' ><span>2.1009</span></td><td style='text-align:center;' ><span>2.5524</span></td><td style='text-align:center;' ><span>2.8784</span></td></tr><tr><td style='text-align:center;' ><span>19</span></td><td style='text-align:center;' ><span>1.3277</span></td><td style='text-align:center;' ><span>1.7291</span></td><td style='text-align:center;' ><span>2.0930</span></td><td style='text-align:center;' ><span>2.5395</span></td><td style='text-align:center;' ><span>2.8609</span></td></tr><tr><td style='text-align:center;' ><span>20</span></td><td style='text-align:center;' ><span>1.3253</span></td><td style='text-align:center;' ><span>1.7247</span></td><td style='text-align:center;' ><span>2.0860</span></td><td style='text-align:center;' ><span>2.5280</span></td><td style='text-align:center;' ><span>2.8453</span></td></tr><tr><td style='text-align:center;' ><span>21</span></td><td style='text-align:center;' ><span>1.3232</span></td><td style='text-align:center;' ><span>1.7207</span></td><td style='text-align:center;' ><span>2.0796</span></td><td style='text-align:center;' ><span>2.5177</span></td><td style='text-align:center;' ><span>2.8314</span></td></tr><tr><td style='text-align:center;' ><span>22</span></td><td style='text-align:center;' ><span>1.3212</span></td><td style='text-align:center;' ><span>1.7171</span></td><td style='text-align:center;' ><span>2.0739</span></td><td style='text-align:center;' ><span>2.5083</span></td><td style='text-align:center;' ><span>2.8188</span></td></tr><tr><td style='text-align:center;' ><span>23</span></td><td style='text-align:center;' ><span>1.3195</span></td><td style='text-align:center;' ><span>1.7139</span></td><td style='text-align:center;' ><span>2.0687</span></td><td style='text-align:center;' ><span>2.4999</span></td><td style='text-align:center;' ><span>2.8073</span></td></tr><tr><td style='text-align:center;' ><span>24</span></td><td style='text-align:center;' ><span>1.3178</span></td><td style='text-align:center;' ><span>1.7109</span></td><td style='text-align:center;' ><span>2.0639</span></td><td style='text-align:center;' ><span>2.4922</span></td><td style='text-align:center;' ><span>2.7969</span></td></tr><tr><td style='text-align:center;' ><span>25</span></td><td style='text-align:center;' ><span>1.3163</span></td><td style='text-align:center;' ><span>1.7081</span></td><td style='text-align:center;' ><span>2.0595</span></td><td style='text-align:center;' ><span>2.4851</span></td><td style='text-align:center;' ><span>2.7874</span></td></tr><tr><td style='text-align:center;' ><span>26</span></td><td style='text-align:center;' ><span>1.3150</span></td><td style='text-align:center;' ><span>1.7056</span></td><td style='text-align:center;' ><span>2.0555</span></td><td style='text-align:center;' ><span>2.4786</span></td><td style='text-align:center;' ><span>2.7787</span></td></tr><tr><td style='text-align:center;' ><span>27</span></td><td style='text-align:center;' ><span>1.3137</span></td><td style='text-align:center;' ><span>1.7033</span></td><td style='text-align:center;' ><span>2.0518</span></td><td style='text-align:center;' ><span>2.4727</span></td><td style='text-align:center;' ><span>2.7707</span></td></tr><tr><td style='text-align:center;' ><span>28</span></td><td style='text-align:center;' ><span>1.3125</span></td><td style='text-align:center;' ><span>1.7011</span></td><td style='text-align:center;' ><span>2.0484</span></td><td style='text-align:center;' ><span>2.4671</span></td><td style='text-align:center;' ><span>2.7633</span></td></tr><tr><td style='text-align:center;' ><span>29</span></td><td style='text-align:center;' ><span>1.3114</span></td><td style='text-align:center;' ><span>1.6991</span></td><td style='text-align:center;' ><span>2.0452</span></td><td style='text-align:center;' ><span>2.4620</span></td><td style='text-align:center;' ><span>2.7564</span></td></tr><tr><td style='text-align:center;' ><span>30</span></td><td style='text-align:center;' ><span>1.3104</span></td><td style='text-align:center;' ><span>1.6973</span></td><td style='text-align:center;' ><span>2.0423</span></td><td style='text-align:center;' ><span>2.4573</span></td><td style='text-align:center;' ><span>2.7500</span></td></tr><tr><td style='text-align:center;' ><span>31</span></td><td style='text-align:center;' ><span>1.3095</span></td><td style='text-align:center;' ><span>1.6955</span></td><td style='text-align:center;' ><span>2.0395</span></td><td style='text-align:center;' ><span>2.4528</span></td><td style='text-align:center;' ><span>2.7740</span></td></tr><tr><td style='text-align:center;' ><span>32</span></td><td style='text-align:center;' ><span>1.3086</span></td><td style='text-align:center;' ><span>1.6939</span></td><td style='text-align:center;' ><span>2.0369</span></td><td style='text-align:center;' ><span>2.4487</span></td><td style='text-align:center;' ><span>2.7385</span></td></tr><tr><td style='text-align:center;' ><span>33</span></td><td style='text-align:center;' ><span>1.3077</span></td><td style='text-align:center;' ><span>1.6924</span></td><td style='text-align:center;' ><span>2.0345</span></td><td style='text-align:center;' ><span>2.4448</span></td><td style='text-align:center;' ><span>2.7333</span></td></tr><tr><td style='text-align:center;' ><span>34</span></td><td style='text-align:center;' ><span>1.3070</span></td><td style='text-align:center;' ><span>1.6909</span></td><td style='text-align:center;' ><span>2.0322</span></td><td style='text-align:center;' ><span>2.4411</span></td><td style='text-align:center;' ><span>2.7284</span></td></tr><tr><td style='text-align:center;' ><span>35</span></td><td style='text-align:center;' ><span>1.3062</span></td><td style='text-align:center;' ><span>1.6896</span></td><td style='text-align:center;' ><span>2.0301</span></td><td style='text-align:center;' ><span>2.4377</span></td><td style='text-align:center;' ><span>2.7238</span></td></tr><tr><td style='text-align:center;' ><span>36</span></td><td style='text-align:center;' ><span>1.3055</span></td><td style='text-align:center;' ><span>1.6883</span></td><td style='text-align:center;' ><span>2.0281</span></td><td style='text-align:center;' ><span>2.4345</span></td><td style='text-align:center;' ><span>2.7195</span></td></tr><tr><td style='text-align:center;' ><span>37</span></td><td style='text-align:center;' ><span>1.3049</span></td><td style='text-align:center;' ><span>1.6871</span></td><td style='text-align:center;' ><span>2.0262</span></td><td style='text-align:center;' ><span>2.4314</span></td><td style='text-align:center;' ><span>2.7154</span></td></tr><tr><td style='text-align:center;' ><span>38</span></td><td style='text-align:center;' ><span>1.3042</span></td><td style='text-align:center;' ><span>1.6860</span></td><td style='text-align:center;' ><span>2.0244</span></td><td style='text-align:center;' ><span>2.4286</span></td><td style='text-align:center;' ><span>2.7116</span></td></tr><tr><td style='text-align:center;' ><span>39</span></td><td style='text-align:center;' ><span>1.3036</span></td><td style='text-align:center;' ><span>1.6849</span></td><td style='text-align:center;' ><span>2.0227</span></td><td style='text-align:center;' ><span>2.4258</span></td><td style='text-align:center;' ><span>2.7079</span></td></tr><tr><td style='text-align:center;' ><span>40</span></td><td style='text-align:center;' ><span>1.3031</span></td><td style='text-align:center;' ><span>1.6839</span></td><td style='text-align:center;' ><span>2.0211</span></td><td style='text-align:center;' ><span>2.4233</span></td><td style='text-align:center;' ><span>2.7045</span></td></tr><tr><td style='text-align:center;' ><span>41</span></td><td style='text-align:center;' ><span>1.3025</span></td><td style='text-align:center;' ><span>1.6829</span></td><td style='text-align:center;' ><span>2.0195</span></td><td style='text-align:center;' ><span>2.4208</span></td><td style='text-align:center;' ><span>2.7012</span></td></tr><tr><td style='text-align:center;' ><span>42</span></td><td style='text-align:center;' ><span>1.3020</span></td><td style='text-align:center;' ><span>1.6820</span></td><td style='text-align:center;' ><span>2.0181</span></td><td style='text-align:center;' ><span>2.4185</span></td><td style='text-align:center;' ><span>2.6981</span></td></tr><tr><td style='text-align:center;' ><span>43</span></td><td style='text-align:center;' ><span>1.3016</span></td><td style='text-align:center;' ><span>1.6811</span></td><td style='text-align:center;' ><span>2.0167</span></td><td style='text-align:center;' ><span>2.4163</span></td><td style='text-align:center;' ><span>2.6951</span></td></tr><tr><td style='text-align:center;' ><span>44</span></td><td style='text-align:center;' ><span>1.3011</span></td><td style='text-align:center;' ><span>1.6802</span></td><td style='text-align:center;' ><span>2.0154</span></td><td style='text-align:center;' ><span>2.4141</span></td><td style='text-align:center;' ><span>2.6923</span></td></tr><tr><td style='text-align:center;' ><span>45</span></td><td style='text-align:center;' ><span>1.3006</span></td><td style='text-align:center;' ><span>1.6794</span></td><td style='text-align:center;' ><span>2.0141</span></td><td style='text-align:center;' ><span>2.4121</span></td><td style='text-align:center;' ><span>2.6896</span></td></tr><tr><td style='text-align:center;' ><span>46</span></td><td style='text-align:center;' ><span>1.3022</span></td><td style='text-align:center;' ><span>1.6787</span></td><td style='text-align:center;' ><span>2.0129</span></td><td style='text-align:center;' ><span>2.4102</span></td><td style='text-align:center;' ><span>2.6870</span></td></tr><tr><td style='text-align:center;' ><span>47</span></td><td style='text-align:center;' ><span>1.2998</span></td><td style='text-align:center;' ><span>1.6779</span></td><td style='text-align:center;' ><span>2.0117</span></td><td style='text-align:center;' ><span>2.4083</span></td><td style='text-align:center;' ><span>2.6846</span></td></tr><tr><td style='text-align:center;' ><span>48</span></td><td style='text-align:center;' ><span>1.2994</span></td><td style='text-align:center;' ><span>1.6772</span></td><td style='text-align:center;' ><span>2.0106</span></td><td style='text-align:center;' ><span>2.4066</span></td><td style='text-align:center;' ><span>2.6822</span></td></tr><tr><td style='text-align:center;' ><span>49</span></td><td style='text-align:center;' ><span>1.2991</span></td><td style='text-align:center;' ><span>1.6766</span></td><td style='text-align:center;' ><span>2.0096</span></td><td style='text-align:center;' ><span>2.4049</span></td><td style='text-align:center;' ><span>2.6800</span></td></tr><tr><td style='text-align:center;' ><span>50</span></td><td style='text-align:center;' ><span>1.2987</span></td><td style='text-align:center;' ><span>1.6759</span></td><td style='text-align:center;' ><span>2.0086</span></td><td style='text-align:center;' ><span>2.4033</span></td><td style='text-align:center;' ><span>2.6778</span></td></tr><tr><td style='text-align:center;' ><span>51</span></td><td style='text-align:center;' ><span>1.2984</span></td><td style='text-align:center;' ><span>1.6753</span></td><td style='text-align:center;' ><span>2.0076</span></td><td style='text-align:center;' ><span>2.4017</span></td><td style='text-align:center;' ><span>2.6757</span></td></tr><tr><td style='text-align:center;' ><span>52</span></td><td style='text-align:center;' ><span>1.2980</span></td><td style='text-align:center;' ><span>1.6747</span></td><td style='text-align:center;' ><span>2.0066</span></td><td style='text-align:center;' ><span>2.4002</span></td><td style='text-align:center;' ><span>2.6737</span></td></tr><tr><td style='text-align:center;' ><span>53</span></td><td style='text-align:center;' ><span>1.2977</span></td><td style='text-align:center;' ><span>1.6741</span></td><td style='text-align:center;' ><span>2.0057</span></td><td style='text-align:center;' ><span>2.3988</span></td><td style='text-align:center;' ><span>2.6718</span></td></tr><tr><td style='text-align:center;' ><span>54</span></td><td style='text-align:center;' ><span>1.2974</span></td><td style='text-align:center;' ><span>1.6736</span></td><td style='text-align:center;' ><span>2.0049</span></td><td style='text-align:center;' ><span>2.3974</span></td><td style='text-align:center;' ><span>2.6700</span></td></tr><tr><td style='text-align:center;' ><span>55</span></td><td style='text-align:center;' ><span>1.2971</span></td><td style='text-align:center;' ><span>1.6730</span></td><td style='text-align:center;' ><span>2.0040</span></td><td style='text-align:center;' ><span>2.3961</span></td><td style='text-align:center;' ><span>2.6682</span></td></tr><tr><td style='text-align:center;' ><span>56</span></td><td style='text-align:center;' ><span>1.2969</span></td><td style='text-align:center;' ><span>1.6725</span></td><td style='text-align:center;' ><span>2.0032</span></td><td style='text-align:center;' ><span>2.3948</span></td><td style='text-align:center;' ><span>2.6665</span></td></tr><tr><td style='text-align:center;' ><span>57</span></td><td style='text-align:center;' ><span>1.2966</span></td><td style='text-align:center;' ><span>1.6720</span></td><td style='text-align:center;' ><span>2.0025</span></td><td style='text-align:center;' ><span>2.3936</span></td><td style='text-align:center;' ><span>2.6649</span></td></tr><tr><td style='text-align:center;' ><span>58</span></td><td style='text-align:center;' ><span>1.2963</span></td><td style='text-align:center;' ><span>1.6716</span></td><td style='text-align:center;' ><span>2.0017</span></td><td style='text-align:center;' ><span>2.3924</span></td><td style='text-align:center;' ><span>2.6633</span></td></tr><tr><td style='text-align:center;' ><span>59</span></td><td style='text-align:center;' ><span>1.2961</span></td><td style='text-align:center;' ><span>1.6711</span></td><td style='text-align:center;' ><span>2.0010</span></td><td style='text-align:center;' ><span>2.3912</span></td><td style='text-align:center;' ><span>2.6618</span></td></tr><tr><td style='text-align:center;' ><span>60</span></td><td style='text-align:center;' ><span>1.2958</span></td><td style='text-align:center;' ><span>1.6706</span></td><td style='text-align:center;' ><span>2.0003</span></td><td style='text-align:center;' ><span>2.3901</span></td><td style='text-align:center;' ><span>2.6603</span></td></tr><tr><td style='text-align:center;' ><span>61</span></td><td style='text-align:center;' ><span>1.2956</span></td><td style='text-align:center;' ><span>1.6702</span></td><td style='text-align:center;' ><span>1.9996</span></td><td style='text-align:center;' ><span>2.3890</span></td><td style='text-align:center;' ><span>2.6589</span></td></tr><tr><td style='text-align:center;' ><span>62</span></td><td style='text-align:center;' ><span>1.2954</span></td><td style='text-align:center;' ><span>1.6698</span></td><td style='text-align:center;' ><span>1.9990</span></td><td style='text-align:center;' ><span>2.3880</span></td><td style='text-align:center;' ><span>2.6575</span></td></tr><tr><td style='text-align:center;' ><span>63</span></td><td style='text-align:center;' ><span>1.2951</span></td><td style='text-align:center;' ><span>1.6694</span></td><td style='text-align:center;' ><span>1.9983</span></td><td style='text-align:center;' ><span>2.3870</span></td><td style='text-align:center;' ><span>2.6561</span></td></tr><tr><td style='text-align:center;' ><span>64</span></td><td style='text-align:center;' ><span>1.2949</span></td><td style='text-align:center;' ><span>1.6690</span></td><td style='text-align:center;' ><span>1.9977</span></td><td style='text-align:center;' ><span>2.3860</span></td><td style='text-align:center;' ><span>2.6549</span></td></tr><tr><td style='text-align:center;' ><span>65</span></td><td style='text-align:center;' ><span>1.2947</span></td><td style='text-align:center;' ><span>1.6686</span></td><td style='text-align:center;' ><span>1.9971</span></td><td style='text-align:center;' ><span>2.3851</span></td><td style='text-align:center;' ><span>2.6536</span></td></tr><tr><td style='text-align:center;' ><span>66</span></td><td style='text-align:center;' ><span>1.2945</span></td><td style='text-align:center;' ><span>1.6683</span></td><td style='text-align:center;' ><span>1.9966</span></td><td style='text-align:center;' ><span>2.3842</span></td><td style='text-align:center;' ><span>2.6524</span></td></tr><tr><td style='text-align:center;' ><span>67</span></td><td style='text-align:center;' ><span>1.2943</span></td><td style='text-align:center;' ><span>1.6679</span></td><td style='text-align:center;' ><span>1.9960</span></td><td style='text-align:center;' ><span>2.3833</span></td><td style='text-align:center;' ><span>2.6512</span></td></tr><tr><td style='text-align:center;' ><span>68</span></td><td style='text-align:center;' ><span>1.2941</span></td><td style='text-align:center;' ><span>1.6676</span></td><td style='text-align:center;' ><span>1.9955</span></td><td style='text-align:center;' ><span>2.3824</span></td><td style='text-align:center;' ><span>2.6501</span></td></tr><tr><td style='text-align:center;' ><span>69</span></td><td style='text-align:center;' ><span>1.2939</span></td><td style='text-align:center;' ><span>1.6672</span></td><td style='text-align:center;' ><span>1.9949</span></td><td style='text-align:center;' ><span>2.3816</span></td><td style='text-align:center;' ><span>2.6490</span></td></tr><tr><td style='text-align:center;' ><span>70</span></td><td style='text-align:center;' ><span>1.2938</span></td><td style='text-align:center;' ><span>1.6669</span></td><td style='text-align:center;' ><span>1.9944</span></td><td style='text-align:center;' ><span>2.3808</span></td><td style='text-align:center;' ><span>2.6479</span></td></tr><tr><td style='text-align:center;' ><span>71</span></td><td style='text-align:center;' ><span>1.2936</span></td><td style='text-align:center;' ><span>1.6666</span></td><td style='text-align:center;' ><span>1.9939</span></td><td style='text-align:center;' ><span>2.3800</span></td><td style='text-align:center;' ><span>2.6469</span></td></tr><tr><td style='text-align:center;' ><span>72</span></td><td style='text-align:center;' ><span>1.2934</span></td><td style='text-align:center;' ><span>1.6663</span></td><td style='text-align:center;' ><span>1.9935</span></td><td style='text-align:center;' ><span>2.3793</span></td><td style='text-align:center;' ><span>2.6459</span></td></tr><tr><td style='text-align:center;' ><span>73</span></td><td style='text-align:center;' ><span>1.2933</span></td><td style='text-align:center;' ><span>1.6660</span></td><td style='text-align:center;' ><span>1.9930</span></td><td style='text-align:center;' ><span>2.3785</span></td><td style='text-align:center;' ><span>2.6449</span></td></tr><tr><td style='text-align:center;' ><span>74</span></td><td style='text-align:center;' ><span>1.2931</span></td><td style='text-align:center;' ><span>1.6657</span></td><td style='text-align:center;' ><span>1.9925</span></td><td style='text-align:center;' ><span>2.3778</span></td><td style='text-align:center;' ><span>2.6439</span></td></tr><tr><td style='text-align:center;' ><span>75</span></td><td style='text-align:center;' ><span>1.2929</span></td><td style='text-align:center;' ><span>1.6654</span></td><td style='text-align:center;' ><span>1.9921</span></td><td style='text-align:center;' ><span>2.3771</span></td><td style='text-align:center;' ><span>2.6430</span></td></tr><tr><td style='text-align:center;' ><span>76</span></td><td style='text-align:center;' ><span>1.2928</span></td><td style='text-align:center;' ><span>1.6652</span></td><td style='text-align:center;' ><span>1.9917</span></td><td style='text-align:center;' ><span>2.3764</span></td><td style='text-align:center;' ><span>2.6421</span></td></tr><tr><td style='text-align:center;' ><span>77</span></td><td style='text-align:center;' ><span>1.2926</span></td><td style='text-align:center;' ><span>1.6649</span></td><td style='text-align:center;' ><span>1.9913</span></td><td style='text-align:center;' ><span>2.3758</span></td><td style='text-align:center;' ><span>2.6412</span></td></tr><tr><td style='text-align:center;' ><span>78</span></td><td style='text-align:center;' ><span>1.2925</span></td><td style='text-align:center;' ><span>1.6646</span></td><td style='text-align:center;' ><span>1.9908</span></td><td style='text-align:center;' ><span>2.3751</span></td><td style='text-align:center;' ><span>2.6403</span></td></tr><tr><td style='text-align:center;' ><span>79</span></td><td style='text-align:center;' ><span>1.2924</span></td><td style='text-align:center;' ><span>1.6644</span></td><td style='text-align:center;' ><span>1.9905</span></td><td style='text-align:center;' ><span>2.3745</span></td><td style='text-align:center;' ><span>2.6395</span></td></tr><tr><td style='text-align:center;' ><span>80</span></td><td style='text-align:center;' ><span>1.2922</span></td><td style='text-align:center;' ><span>1.6641</span></td><td style='text-align:center;' ><span>1.9901</span></td><td style='text-align:center;' ><span>2.3739</span></td><td style='text-align:center;' ><span>2.6387</span></td></tr><tr><td style='text-align:center;' ><span>81</span></td><td style='text-align:center;' ><span>1.2921</span></td><td style='text-align:center;' ><span>1.6639</span></td><td style='text-align:center;' ><span>1.9897</span></td><td style='text-align:center;' ><span>2.3733</span></td><td style='text-align:center;' ><span>2.6379</span></td></tr><tr><td style='text-align:center;' ><span>82</span></td><td style='text-align:center;' ><span>1.2920</span></td><td style='text-align:center;' ><span>1.6636</span></td><td style='text-align:center;' ><span>1.9893</span></td><td style='text-align:center;' ><span>2.3727</span></td><td style='text-align:center;' ><span>2.6371</span></td></tr><tr><td style='text-align:center;' ><span>83</span></td><td style='text-align:center;' ><span>1.2918</span></td><td style='text-align:center;' ><span>1.6634</span></td><td style='text-align:center;' ><span>1.9890</span></td><td style='text-align:center;' ><span>2.3721</span></td><td style='text-align:center;' ><span>2.6364</span></td></tr><tr><td style='text-align:center;' ><span>84</span></td><td style='text-align:center;' ><span>1.2917</span></td><td style='text-align:center;' ><span>1.6632</span></td><td style='text-align:center;' ><span>1.9886</span></td><td style='text-align:center;' ><span>2.3716</span></td><td style='text-align:center;' ><span>2.6356</span></td></tr><tr><td style='text-align:center;' ><span>85</span></td><td style='text-align:center;' ><span>1.2916</span></td><td style='text-align:center;' ><span>1.6630</span></td><td style='text-align:center;' ><span>1.9883</span></td><td style='text-align:center;' ><span>2.3710</span></td><td style='text-align:center;' ><span>2.6349</span></td></tr><tr><td style='text-align:center;' ><span>86</span></td><td style='text-align:center;' ><span>1.2915</span></td><td style='text-align:center;' ><span>1.6628</span></td><td style='text-align:center;' ><span>1.9879</span></td><td style='text-align:center;' ><span>2.3705</span></td><td style='text-align:center;' ><span>2.6342</span></td></tr><tr><td style='text-align:center;' ><span>87</span></td><td style='text-align:center;' ><span>1.2914</span></td><td style='text-align:center;' ><span>1.6626</span></td><td style='text-align:center;' ><span>1.9876</span></td><td style='text-align:center;' ><span>2.3700</span></td><td style='text-align:center;' ><span>2.6335</span></td></tr><tr><td style='text-align:center;' ><span>88</span></td><td style='text-align:center;' ><span>1.2912</span></td><td style='text-align:center;' ><span>1.6624</span></td><td style='text-align:center;' ><span>1.9873</span></td><td style='text-align:center;' ><span>2.3695</span></td><td style='text-align:center;' ><span>2.6329</span></td></tr><tr><td style='text-align:center;' ><span>89</span></td><td style='text-align:center;' ><span>1.2911</span></td><td style='text-align:center;' ><span>1.6622</span></td><td style='text-align:center;' ><span>1.9870</span></td><td style='text-align:center;' ><span>2.3690</span></td><td style='text-align:center;' ><span>2.6322</span></td></tr><tr><td style='text-align:center;' ><span>90</span></td><td style='text-align:center;' ><span>1.2910</span></td><td style='text-align:center;' ><span>1.6620</span></td><td style='text-align:center;' ><span>1.9867</span></td><td style='text-align:center;' ><span>2.3685</span></td><td style='text-align:center;' ><span>2.6316</span></td></tr><tr><td style='text-align:center;' ><span>91</span></td><td style='text-align:center;' ><span>1.2909</span></td><td style='text-align:center;' ><span>1.6618</span></td><td style='text-align:center;' ><span>1.9864</span></td><td style='text-align:center;' ><span>2.3680</span></td><td style='text-align:center;' ><span>2.6309</span></td></tr><tr><td style='text-align:center;' ><span>92</span></td><td style='text-align:center;' ><span>1.2908</span></td><td style='text-align:center;' ><span>1.6616</span></td><td style='text-align:center;' ><span>1.9861</span></td><td style='text-align:center;' ><span>2.3676</span></td><td style='text-align:center;' ><span>2.6303</span></td></tr><tr><td style='text-align:center;' ><span>93</span></td><td style='text-align:center;' ><span>1.2907</span></td><td style='text-align:center;' ><span>1.6614</span></td><td style='text-align:center;' ><span>1.9858</span></td><td style='text-align:center;' ><span>2.3671</span></td><td style='text-align:center;' ><span>2.6297</span></td></tr><tr><td style='text-align:center;' ><span>94</span></td><td style='text-align:center;' ><span>1.2906</span></td><td style='text-align:center;' ><span>1.6612</span></td><td style='text-align:center;' ><span>1.9855</span></td><td style='text-align:center;' ><span>2.3667</span></td><td style='text-align:center;' ><span>2.6291</span></td></tr><tr><td style='text-align:center;' ><span>95</span></td><td style='text-align:center;' ><span>1.2905</span></td><td style='text-align:center;' ><span>1.6611</span></td><td style='text-align:center;' ><span>1.9853</span></td><td style='text-align:center;' ><span>2.3662</span></td><td style='text-align:center;' ><span>2.6286</span></td></tr><tr><td style='text-align:center;' ><span>96</span></td><td style='text-align:center;' ><span>1.2904</span></td><td style='text-align:center;' ><span>1.6609</span></td><td style='text-align:center;' ><span>1.9850</span></td><td style='text-align:center;' ><span>2.3658</span></td><td style='text-align:center;' ><span>2.6280</span></td></tr><tr><td style='text-align:center;' ><span>97</span></td><td style='text-align:center;' ><span>1.2903</span></td><td style='text-align:center;' ><span>1.6607</span></td><td style='text-align:center;' ><span>1.9847</span></td><td style='text-align:center;' ><span>2.3654</span></td><td style='text-align:center;' ><span>2.6275</span></td></tr><tr><td style='text-align:center;' ><span>98</span></td><td style='text-align:center;' ><span>1.2902</span></td><td style='text-align:center;' ><span>1.6606</span></td><td style='text-align:center;' ><span>1.9845</span></td><td style='text-align:center;' ><span>2.3650</span></td><td style='text-align:center;' ><span>2.6269</span></td></tr><tr><td style='text-align:center;' ><span>99</span></td><td style='text-align:center;' ><span>1.2902</span></td><td style='text-align:center;' ><span>1.6604</span></td><td style='text-align:center;' ><span>1.9842</span></td><td style='text-align:center;' ><span>2.3646</span></td><td style='text-align:center;' ><span>2.6264</span></td></tr><tr><td style='text-align:center;' ><span>100</span></td><td style='text-align:center;' ><span>1.2901</span></td><td style='text-align:center;' ><span>1.6602</span></td><td style='text-align:center;' ><span>1.9840</span></td><td style='text-align:center;' ><span>2.3642</span></td><td style='text-align:center;' ><span>2.6259</span></td></tr><tr><td style='text-align:center;' ><span>105</span></td><td style='text-align:center;' ><span>1.2897</span></td><td style='text-align:center;' ><span>1.6595</span></td><td style='text-align:center;' ><span>1.9828</span></td><td style='text-align:center;' ><span>2.3624</span></td><td style='text-align:center;' ><span>2.6235</span></td></tr><tr><td style='text-align:center;' ><span>110</span></td><td style='text-align:center;' ><span>1.2893</span></td><td style='text-align:center;' ><span>1.6588</span></td><td style='text-align:center;' ><span>1.9818</span></td><td style='text-align:center;' ><span>2.3607</span></td><td style='text-align:center;' ><span>2.6213</span></td></tr><tr><td style='text-align:center;' ><span>115</span></td><td style='text-align:center;' ><span>1.2890</span></td><td style='text-align:center;' ><span>1.6582</span></td><td style='text-align:center;' ><span>1.9808</span></td><td style='text-align:center;' ><span>2.3592</span></td><td style='text-align:center;' ><span>2.6193</span></td></tr><tr><td style='text-align:center;' ><span>120</span></td><td style='text-align:center;' ><span>1.2886</span></td><td style='text-align:center;' ><span>1.6577</span></td><td style='text-align:center;' ><span>1.9799</span></td><td style='text-align:center;' ><span>2.3578</span></td><td style='text-align:center;' ><span>2.6174</span></td></tr><tr><td style='text-align:center;' ><span>125</span></td><td style='text-align:center;' ><span>1.2884</span></td><td style='text-align:center;' ><span>1.6571</span></td><td style='text-align:center;' ><span>1.9791</span></td><td style='text-align:center;' ><span>2.3565</span></td><td style='text-align:center;' ><span>2.6157</span></td></tr><tr><td style='text-align:center;' ><span>130</span></td><td style='text-align:center;' ><span>1.2881</span></td><td style='text-align:center;' ><span>1.6567</span></td><td style='text-align:center;' ><span>1.9784</span></td><td style='text-align:center;' ><span>2.3554</span></td><td style='text-align:center;' ><span>2.6142</span></td></tr><tr><td style='text-align:center;' ><span>135</span></td><td style='text-align:center;' ><span>1.2879</span></td><td style='text-align:center;' ><span>1.6562</span></td><td style='text-align:center;' ><span>1.9777</span></td><td style='text-align:center;' ><span>2.3543</span></td><td style='text-align:center;' ><span>2.6127</span></td></tr><tr><td style='text-align:center;' ><span>140</span></td><td style='text-align:center;' ><span>1.2876</span></td><td style='text-align:center;' ><span>1.6558</span></td><td style='text-align:center;' ><span>1.9771</span></td><td style='text-align:center;' ><span>2.3533</span></td><td style='text-align:center;' ><span>2.6114</span></td></tr><tr><td style='text-align:center;' ><span>145</span></td><td style='text-align:center;' ><span>1.2874</span></td><td style='text-align:center;' ><span>1.6554</span></td><td style='text-align:center;' ><span>1.9765</span></td><td style='text-align:center;' ><span>2.3523</span></td><td style='text-align:center;' ><span>2.6102</span></td></tr><tr><td style='text-align:center;' ><span>150</span></td><td style='text-align:center;' ><span>1.2872</span></td><td style='text-align:center;' ><span>1.6551</span></td><td style='text-align:center;' ><span>1.9759</span></td><td style='text-align:center;' ><span>2.3515</span></td><td style='text-align:center;' ><span>2.6090</span></td></tr><tr><td style='text-align:center;' ><span>155</span></td><td style='text-align:center;' ><span>1.2870</span></td><td style='text-align:center;' ><span>1.6547</span></td><td style='text-align:center;' ><span>1.9754</span></td><td style='text-align:center;' ><span>2.3506</span></td><td style='text-align:center;' ><span>2.6079</span></td></tr><tr><td style='text-align:center;' ><span>160</span></td><td style='text-align:center;' ><span>1.2869</span></td><td style='text-align:center;' ><span>1.6544</span></td><td style='text-align:center;' ><span>1.9749</span></td><td style='text-align:center;' ><span>2.3499</span></td><td style='text-align:center;' ><span>2.6069</span></td></tr><tr><td style='text-align:center;' ><span>165</span></td><td style='text-align:center;' ><span>1.2867</span></td><td style='text-align:center;' ><span>1.6541</span></td><td style='text-align:center;' ><span>1.9744</span></td><td style='text-align:center;' ><span>2.3492</span></td><td style='text-align:center;' ><span>2.6060</span></td></tr><tr><td style='text-align:center;' ><span>170</span></td><td style='text-align:center;' ><span>1.2866</span></td><td style='text-align:center;' ><span>1.6539</span></td><td style='text-align:center;' ><span>1.9740</span></td><td style='text-align:center;' ><span>2.3485</span></td><td style='text-align:center;' ><span>2.6051</span></td></tr><tr><td style='text-align:center;' ><span>175</span></td><td style='text-align:center;' ><span>1.2864</span></td><td style='text-align:center;' ><span>1.6536</span></td><td style='text-align:center;' ><span>1.9736</span></td><td style='text-align:center;' ><span>2.3478</span></td><td style='text-align:center;' ><span>2.6042</span></td></tr><tr><td style='text-align:center;' ><span>180</span></td><td style='text-align:center;' ><span>1.2863</span></td><td style='text-align:center;' ><span>1.6534</span></td><td style='text-align:center;' ><span>1.9732</span></td><td style='text-align:center;' ><span>2.3472</span></td><td style='text-align:center;' ><span>2.6034</span></td></tr><tr><td style='text-align:center;' ><span>185</span></td><td style='text-align:center;' ><span>1.2861</span></td><td style='text-align:center;' ><span>1.6531</span></td><td style='text-align:center;' ><span>1.9729</span></td><td style='text-align:center;' ><span>2.3467</span></td><td style='text-align:center;' ><span>2.6027</span></td></tr><tr><td style='text-align:center;' ><span>190</span></td><td style='text-align:center;' ><span>1.2860</span></td><td style='text-align:center;' ><span>1.6529</span></td><td style='text-align:center;' ><span>1.9725</span></td><td style='text-align:center;' ><span>2.3461</span></td><td style='text-align:center;' ><span>2.6020</span></td></tr><tr><td style='text-align:center;' ><span>195</span></td><td style='text-align:center;' ><span>1.2859</span></td><td style='text-align:center;' ><span>1.6527</span></td><td style='text-align:center;' ><span>1.9722</span></td><td style='text-align:center;' ><span>2.3456</span></td><td style='text-align:center;' ><span>2.6013</span></td></tr><tr><td style='text-align:center;' ><span>200</span></td><td style='text-align:center;' ><span>1.2858</span></td><td style='text-align:center;' ><span>1.6525</span></td><td style='text-align:center;' ><span>1.9719</span></td><td style='text-align:center;' ><span>2.3451</span></td><td style='text-align:center;' ><span>2.6006</span></td></tr><tr><td style='text-align:center;' ><span>205</span></td><td style='text-align:center;' ><span>1.2857</span></td><td style='text-align:center;' ><span>1.6523</span></td><td style='text-align:center;' ><span>1.9716</span></td><td style='text-align:center;' ><span>2.3447</span></td><td style='text-align:center;' ><span>2.6000</span></td></tr><tr><td style='text-align:center;' ><span>210</span></td><td style='text-align:center;' ><span>1.2856</span></td><td style='text-align:center;' ><span>1.6521</span></td><td style='text-align:center;' ><span>1.9713</span></td><td style='text-align:center;' ><span>2.3442</span></td><td style='text-align:center;' ><span>2.5994</span></td></tr><tr><td style='text-align:center;' ><span>215</span></td><td style='text-align:center;' ><span>1.2855</span></td><td style='text-align:center;' ><span>1.6520</span></td><td style='text-align:center;' ><span>1.9711</span></td><td style='text-align:center;' ><span>2.3438</span></td><td style='text-align:center;' ><span>2.5989</span></td></tr><tr><td style='text-align:center;' ><span>220</span></td><td style='text-align:center;' ><span>1.2854</span></td><td style='text-align:center;' ><span>1.6518</span></td><td style='text-align:center;' ><span>1.9708</span></td><td style='text-align:center;' ><span>2.3434</span></td><td style='text-align:center;' ><span>2.5984</span></td></tr><tr><td style='text-align:center;' ><span>225</span></td><td style='text-align:center;' ><span>1.2853</span></td><td style='text-align:center;' ><span>1.6517</span></td><td style='text-align:center;' ><span>1.9706</span></td><td style='text-align:center;' ><span>2.3430</span></td><td style='text-align:center;' ><span>2.5979</span></td></tr><tr><td style='text-align:center;' ><span>230</span></td><td style='text-align:center;' ><span>1.2852</span></td><td style='text-align:center;' ><span>1.6515</span></td><td style='text-align:center;' ><span>1.9703</span></td><td style='text-align:center;' ><span>2.3427</span></td><td style='text-align:center;' ><span>2.5974</span></td></tr><tr><td style='text-align:center;' ><span>235</span></td><td style='text-align:center;' ><span>1.2852</span></td><td style='text-align:center;' ><span>1.6514</span></td><td style='text-align:center;' ><span>1.9701</span></td><td style='text-align:center;' ><span>2.3423</span></td><td style='text-align:center;' ><span>2.5969</span></td></tr><tr><td style='text-align:center;' ><span>240</span></td><td style='text-align:center;' ><span>1.2851</span></td><td style='text-align:center;' ><span>1.6512</span></td><td style='text-align:center;' ><span>1.9699</span></td><td style='text-align:center;' ><span>2.3420</span></td><td style='text-align:center;' ><span>2.5965</span></td></tr><tr><td style='text-align:center;' ><span>245</span></td><td style='text-align:center;' ><span>1.2850</span></td><td style='text-align:center;' ><span>1.6511</span></td><td style='text-align:center;' ><span>1.9697</span></td><td style='text-align:center;' ><span>2.3417</span></td><td style='text-align:center;' ><span>2.5960</span></td></tr><tr><td style='text-align:center;' ><span>250</span></td><td style='text-align:center;' ><span>1.2849</span></td><td style='text-align:center;' ><span>1.6510</span></td><td style='text-align:center;' ><span>1.9695</span></td><td style='text-align:center;' ><span>2.3414</span></td><td style='text-align:center;' ><span>2.5956</span></td></tr><tr><td style='text-align:center;' ><span>255</span></td><td style='text-align:center;' ><span>1.2849</span></td><td style='text-align:center;' ><span>1.6509</span></td><td style='text-align:center;' ><span>1.9693</span></td><td style='text-align:center;' ><span>2.3411</span></td><td style='text-align:center;' ><span>2.5952</span></td></tr><tr><td style='text-align:center;' ><span>260</span></td><td style='text-align:center;' ><span>1.2848</span></td><td style='text-align:center;' ><span>1.6507</span></td><td style='text-align:center;' ><span>1.9691</span></td><td style='text-align:center;' ><span>2.3408</span></td><td style='text-align:center;' ><span>2.5949</span></td></tr><tr><td style='text-align:center;' ><span>265</span></td><td style='text-align:center;' ><span>1.2848</span></td><td style='text-align:center;' ><span>1.6506</span></td><td style='text-align:center;' ><span>1.9690</span></td><td style='text-align:center;' ><span>2.3405</span></td><td style='text-align:center;' ><span>2.5945</span></td></tr><tr><td style='text-align:center;' ><span>270</span></td><td style='text-align:center;' ><span>1.2847</span></td><td style='text-align:center;' ><span>1.6505</span></td><td style='text-align:center;' ><span>1.9688</span></td><td style='text-align:center;' ><span>2.3402</span></td><td style='text-align:center;' ><span>2.5942</span></td></tr><tr><td style='text-align:center;' ><span>275</span></td><td style='text-align:center;' ><span>1.2846</span></td><td style='text-align:center;' ><span>1.6504</span></td><td style='text-align:center;' ><span>1.9686</span></td><td style='text-align:center;' ><span>2.3400</span></td><td style='text-align:center;' ><span>2.5938</span></td></tr><tr><td style='text-align:center;' ><span>280</span></td><td style='text-align:center;' ><span>1.2846</span></td><td style='text-align:center;' ><span>1.6503</span></td><td style='text-align:center;' ><span>1.9685</span></td><td style='text-align:center;' ><span>2.3397</span></td><td style='text-align:center;' ><span>2.5935</span></td></tr><tr><td style='text-align:center;' ><span>285</span></td><td style='text-align:center;' ><span>1.2845</span></td><td style='text-align:center;' ><span>1.6502</span></td><td style='text-align:center;' ><span>1.9683</span></td><td style='text-align:center;' ><span>2.3395</span></td><td style='text-align:center;' ><span>2.5932</span></td></tr><tr><td style='text-align:center;' ><span>290</span></td><td style='text-align:center;' ><span>1.2845</span></td><td style='text-align:center;' ><span>1.6501</span></td><td style='text-align:center;' ><span>1.9682</span></td><td style='text-align:center;' ><span>2.3393</span></td><td style='text-align:center;' ><span>2.5929</span></td></tr><tr><td style='text-align:center;' ><span>295</span></td><td style='text-align:center;' ><span>1.2844</span></td><td style='text-align:center;' ><span>1.6500</span></td><td style='text-align:center;' ><span>1.9680</span></td><td style='text-align:center;' ><span>2.3391</span></td><td style='text-align:center;' ><span>2.5926</span></td></tr><tr><td style='text-align:center;' ><span>300</span></td><td style='text-align:center;' ><span>1.2844</span></td><td style='text-align:center;' ><span>1.6499</span></td><td style='text-align:center;' ><span>1.9679</span></td><td style='text-align:center;' ><span>2.3388</span></td><td style='text-align:center;' ><span>2.5923</span></td></tr><tr><td style='text-align:center;' ><span>305</span></td><td style='text-align:center;' ><span>1.2843</span></td><td style='text-align:center;' ><span>1.6499</span></td><td style='text-align:center;' ><span>1.9678</span></td><td style='text-align:center;' ><span>2.3386</span></td><td style='text-align:center;' ><span>2.5920</span></td></tr><tr><td style='text-align:center;' ><span>310</span></td><td style='text-align:center;' ><span>1.2843</span></td><td style='text-align:center;' ><span>1.6498</span></td><td style='text-align:center;' ><span>1.9676</span></td><td style='text-align:center;' ><span>2.3384</span></td><td style='text-align:center;' ><span>2.5918</span></td></tr><tr><td style='text-align:center;' ><span>315</span></td><td style='text-align:center;' ><span>1.2842</span></td><td style='text-align:center;' ><span>1.6497</span></td><td style='text-align:center;' ><span>1.9675</span></td><td style='text-align:center;' ><span>2.3382</span></td><td style='text-align:center;' ><span>2.5915</span></td></tr><tr><td style='text-align:center;' ><span>320</span></td><td style='text-align:center;' ><span>1.2842</span></td><td style='text-align:center;' ><span>1.6496</span></td><td style='text-align:center;' ><span>1.9674</span></td><td style='text-align:center;' ><span>2.3381</span></td><td style='text-align:center;' ><span>2.5913</span></td></tr><tr><td style='text-align:center;' ><span>325</span></td><td style='text-align:center;' ><span>1.2842</span></td><td style='text-align:center;' ><span>1.6496</span></td><td style='text-align:center;' ><span>1.9673</span></td><td style='text-align:center;' ><span>2.3379</span></td><td style='text-align:center;' ><span>2.5910</span></td></tr><tr><td style='text-align:center;' ><span>330</span></td><td style='text-align:center;' ><span>1.2841</span></td><td style='text-align:center;' ><span>1.6495</span></td><td style='text-align:center;' ><span>1.9672</span></td><td style='text-align:center;' ><span>2.3377</span></td><td style='text-align:center;' ><span>2.5908</span></td></tr><tr><td style='text-align:center;' ><span>335</span></td><td style='text-align:center;' ><span>1.2841</span></td><td style='text-align:center;' ><span>1.6494</span></td><td style='text-align:center;' ><span>1.9671</span></td><td style='text-align:center;' ><span>2.3375</span></td><td style='text-align:center;' ><span>2.5906</span></td></tr><tr><td style='text-align:center;' ><span>340</span></td><td style='text-align:center;' ><span>1.2840</span></td><td style='text-align:center;' ><span>1.6493</span></td><td style='text-align:center;' ><span>1.9670</span></td><td style='text-align:center;' ><span>2.3374</span></td><td style='text-align:center;' ><span>2.5904</span></td></tr><tr><td style='text-align:center;' ><span>345</span></td><td style='text-align:center;' ><span>1.2840</span></td><td style='text-align:center;' ><span>1.6493</span></td><td style='text-align:center;' ><span>1.9669</span></td><td style='text-align:center;' ><span>2.3372</span></td><td style='text-align:center;' ><span>2.5902</span></td></tr><tr><td style='text-align:center;' ><span>350</span></td><td style='text-align:center;' ><span>1.2840</span></td><td style='text-align:center;' ><span>1.6492</span></td><td style='text-align:center;' ><span>1.9668</span></td><td style='text-align:center;' ><span>2.3370</span></td><td style='text-align:center;' ><span>2.5899</span></td></tr><tr><td style='text-align:center;' ><span>360</span></td><td style='text-align:center;' ><span>1.2839</span></td><td style='text-align:center;' ><span>1.6491</span></td><td style='text-align:center;' ><span>1.9666</span></td><td style='text-align:center;' ><span>2.3368</span></td><td style='text-align:center;' ><span>2.5896</span></td></tr><tr><td style='text-align:center;' ><span>370</span></td><td style='text-align:center;' ><span>1.2838</span></td><td style='text-align:center;' ><span>1.6490</span></td><td style='text-align:center;' ><span>1.9664</span></td><td style='text-align:center;' ><span>2.3365</span></td><td style='text-align:center;' ><span>2.5892</span></td></tr><tr><td style='text-align:center;' ><span>380</span></td><td style='text-align:center;' ><span>1.2838</span></td><td style='text-align:center;' ><span>1.6489</span></td><td style='text-align:center;' ><span>1.9662</span></td><td style='text-align:center;' ><span>2.3362</span></td><td style='text-align:center;' ><span>2.5888</span></td></tr><tr><td style='text-align:center;' ><span>390</span></td><td style='text-align:center;' ><span>1.2837</span></td><td style='text-align:center;' ><span>1.6488</span></td><td style='text-align:center;' ><span>1.9661</span></td><td style='text-align:center;' ><span>2.3359</span></td><td style='text-align:center;' ><span>2.5885</span></td></tr><tr><td style='text-align:center;' ><span>400</span></td><td style='text-align:center;' ><span>1.2837</span></td><td style='text-align:center;' ><span>1.6487</span></td><td style='text-align:center;' ><span>1.9659</span></td><td style='text-align:center;' ><span>2.3357</span></td><td style='text-align:center;' ><span>2.5882</span></td></tr><tr><td style='text-align:center;' ><span>420</span></td><td style='text-align:center;' ><span>1.2836</span></td><td style='text-align:center;' ><span>1.6485</span></td><td style='text-align:center;' ><span>1.9656</span></td><td style='text-align:center;' ><span>2.3353</span></td><td style='text-align:center;' ><span>2.5876</span></td></tr><tr><td style='text-align:center;' ><span>440</span></td><td style='text-align:center;' ><span>1.2835</span></td><td style='text-align:center;' ><span>1.6483</span></td><td style='text-align:center;' ><span>1.9654</span></td><td style='text-align:center;' ><span>2.3349</span></td><td style='text-align:center;' ><span>2.5870</span></td></tr><tr><td style='text-align:center;' ><span>460</span></td><td style='text-align:center;' ><span>1.2834</span></td><td style='text-align:center;' ><span>1.6482</span></td><td style='text-align:center;' ><span>1.9651</span></td><td style='text-align:center;' ><span>2.3345</span></td><td style='text-align:center;' ><span>2.5866</span></td></tr><tr><td style='text-align:center;' ><span>480</span></td><td style='text-align:center;' ><span>1.2833</span></td><td style='text-align:center;' ><span>1.6480</span></td><td style='text-align:center;' ><span>1.9649</span></td><td style='text-align:center;' ><span>2.3341</span></td><td style='text-align:center;' ><span>2.5861</span></td></tr><tr><td style='text-align:center;' ><span>500</span></td><td style='text-align:center;' ><span>1.2832</span></td><td style='text-align:center;' ><span>1.6479</span></td><td style='text-align:center;' ><span>1.9647</span></td><td style='text-align:center;' ><span>2.3338</span></td><td style='text-align:center;' ><span>2.5857</span></td></tr><tr><td style='text-align:center;' ><span>520</span></td><td style='text-align:center;' ><span>1.2832</span></td><td style='text-align:center;' ><span>1.6478</span></td><td style='text-align:center;' ><span>1.9645</span></td><td style='text-align:center;' ><span>2.3335</span></td><td style='text-align:center;' ><span>2.5853</span></td></tr><tr><td style='text-align:center;' ><span>540</span></td><td style='text-align:center;' ><span>1.2831</span></td><td style='text-align:center;' ><span>1.6477</span></td><td style='text-align:center;' ><span>1.9644</span></td><td style='text-align:center;' ><span>2.3333</span></td><td style='text-align:center;' ><span>2.5850</span></td></tr><tr><td style='text-align:center;' ><span>560</span></td><td style='text-align:center;' ><span>1.2831</span></td><td style='text-align:center;' ><span>1.6476</span></td><td style='text-align:center;' ><span>1.9642</span></td><td style='text-align:center;' ><span>2.3330</span></td><td style='text-align:center;' ><span>2.5846</span></td></tr><tr><td style='text-align:center;' ><span>580</span></td><td style='text-align:center;' ><span>1.2830</span></td><td style='text-align:center;' ><span>1.6475</span></td><td style='text-align:center;' ><span>1.9641</span></td><td style='text-align:center;' ><span>2.3328</span></td><td style='text-align:center;' ><span>2.5843</span></td></tr><tr><td style='text-align:center;' ><span>600</span></td><td style='text-align:center;' ><span>1.2830</span></td><td style='text-align:center;' ><span>1.6474</span></td><td style='text-align:center;' ><span>1.9639</span></td><td style='text-align:center;' ><span>2.3326</span></td><td style='text-align:center;' ><span>2.5840</span></td></tr><tr><td style='text-align:center;' ><span>620</span></td><td style='text-align:center;' ><span>1.2829</span></td><td style='text-align:center;' ><span>1.6473</span></td><td style='text-align:center;' ><span>1.9638</span></td><td style='text-align:center;' ><span>2.3324</span></td><td style='text-align:center;' ><span>2.5838</span></td></tr><tr><td style='text-align:center;' ><span>640</span></td><td style='text-align:center;' ><span>1.2829</span></td><td style='text-align:center;' ><span>1.6472</span></td><td style='text-align:center;' ><span>1.9637</span></td><td style='text-align:center;' ><span>2.3322</span></td><td style='text-align:center;' ><span>2.5835</span></td></tr><tr><td style='text-align:center;' ><span>660</span></td><td style='text-align:center;' ><span>1.2828</span></td><td style='text-align:center;' ><span>1.6472</span></td><td style='text-align:center;' ><span>1.9636</span></td><td style='text-align:center;' ><span>2.3320</span></td><td style='text-align:center;' ><span>2.5833</span></td></tr><tr><td style='text-align:center;' ><span>680</span></td><td style='text-align:center;' ><span>1.2828</span></td><td style='text-align:center;' ><span>1.6471</span></td><td style='text-align:center;' ><span>1.9635</span></td><td style='text-align:center;' ><span>2.3318</span></td><td style='text-align:center;' ><span>2.5831</span></td></tr><tr><td style='text-align:center;' ><span>700</span></td><td style='text-align:center;' ><span>1.2828</span></td><td style='text-align:center;' ><span>1.6470</span></td><td style='text-align:center;' ><span>1.9634</span></td><td style='text-align:center;' ><span>2.3317</span></td><td style='text-align:center;' ><span>2.5829</span></td></tr><tr><td style='text-align:center;' ><span>720</span></td><td style='text-align:center;' ><span>1.2827</span></td><td style='text-align:center;' ><span>1.6470</span></td><td style='text-align:center;' ><span>1.9633</span></td><td style='text-align:center;' ><span>2.3315</span></td><td style='text-align:center;' ><span>2.5827</span></td></tr><tr><td style='text-align:center;' ><span>740</span></td><td style='text-align:center;' ><span>1.2827</span></td><td style='text-align:center;' ><span>1.6469</span></td><td style='text-align:center;' ><span>1.9632</span></td><td style='text-align:center;' ><span>2.3314</span></td><td style='text-align:center;' ><span>2.5825</span></td></tr><tr><td style='text-align:center;' ><span>760</span></td><td style='text-align:center;' ><span>1.2827</span></td><td style='text-align:center;' ><span>1.6469</span></td><td style='text-align:center;' ><span>1.9631</span></td><td style='text-align:center;' ><span>2.3313</span></td><td style='text-align:center;' ><span>2.5823</span></td></tr><tr><td style='text-align:center;' ><span>780</span></td><td style='text-align:center;' ><span>1.2826</span></td><td style='text-align:center;' ><span>1.6468</span></td><td style='text-align:center;' ><span>1.9630</span></td><td style='text-align:center;' ><span>2.3311</span></td><td style='text-align:center;' ><span>2.5821</span></td></tr><tr><td style='text-align:center;' ><span>800</span></td><td style='text-align:center;' ><span>1.2826</span></td><td style='text-align:center;' ><span>1.6468</span></td><td style='text-align:center;' ><span>1.9629</span></td><td style='text-align:center;' ><span>2.3310</span></td><td style='text-align:center;' ><span>2.5820</span></td></tr><tr><td style='text-align:center;' ><span>820</span></td><td style='text-align:center;' ><span>1.2826</span></td><td style='text-align:center;' ><span>1.6467</span></td><td style='text-align:center;' ><span>1.9629</span></td><td style='text-align:center;' ><span>2.3309</span></td><td style='text-align:center;' ><span>2.5818</span></td></tr><tr><td style='text-align:center;' ><span>840</span></td><td style='text-align:center;' ><span>1.2826</span></td><td style='text-align:center;' ><span>1.6467</span></td><td style='text-align:center;' ><span>1.9628</span></td><td style='text-align:center;' ><span>2.3308</span></td><td style='text-align:center;' ><span>2.5817</span></td></tr><tr><td style='text-align:center;' ><span>860</span></td><td style='text-align:center;' ><span>1.2825</span></td><td style='text-align:center;' ><span>1.6466</span></td><td style='text-align:center;' ><span>1.9627</span></td><td style='text-align:center;' ><span>2.3307</span></td><td style='text-align:center;' ><span>2.5816</span></td></tr><tr><td style='text-align:center;' ><span>880</span></td><td style='text-align:center;' ><span>1.2825</span></td><td style='text-align:center;' ><span>1.6466</span></td><td style='text-align:center;' ><span>1.9627</span></td><td style='text-align:center;' ><span>2.3306</span></td><td style='text-align:center;' ><span>2.5814</span></td></tr><tr><td style='text-align:center;' ><span>900</span></td><td style='text-align:center;' ><span>1.2825</span></td><td style='text-align:center;' ><span>1.6465</span></td><td style='text-align:center;' ><span>1.9626</span></td><td style='text-align:center;' ><span>2.3305</span></td><td style='text-align:center;' ><span>2.5813</span></td></tr><tr><td style='text-align:center;' ><span>920</span></td><td style='text-align:center;' ><span>1.2825</span></td><td style='text-align:center;' ><span>1.6465</span></td><td style='text-align:center;' ><span>1.9625</span></td><td style='text-align:center;' ><span>2.3304</span></td><td style='text-align:center;' ><span>2.5812</span></td></tr><tr><td style='text-align:center;' ><span>940</span></td><td style='text-align:center;' ><span>1.2825</span></td><td style='text-align:center;' ><span>1.6465</span></td><td style='text-align:center;' ><span>1.9625</span></td><td style='text-align:center;' ><span>2.3303</span></td><td style='text-align:center;' ><span>2.5811</span></td></tr><tr><td style='text-align:center;' ><span>960</span></td><td style='text-align:center;' ><span>1.2824</span></td><td style='text-align:center;' ><span>1.6464</span></td><td style='text-align:center;' ><span>1.9624</span></td><td style='text-align:center;' ><span>2.3302</span></td><td style='text-align:center;' ><span>2.5810</span></td></tr><tr><td style='text-align:center;' ><span>980</span></td><td style='text-align:center;' ><span>1.2824</span></td><td style='text-align:center;' ><span>1.6464</span></td><td style='text-align:center;' ><span>1.9624</span></td><td style='text-align:center;' ><span>2.3302</span></td><td style='text-align:center;' ><span>2.5809</span></td></tr><tr><td style='text-align:center;' ><span>1000</span></td><td style='text-align:center;' ><span>1.2824</span></td><td style='text-align:center;' ><span>1.6464</span></td><td style='text-align:center;' ><span>1.9623</span></td><td style='text-align:center;' ><span>2.3301</span></td><td style='text-align:center;' ><span>2.5808</span></td></tr><tr><td style='text-align:center;' ><span>1020</span></td><td style='text-align:center;' ><span>1.2824</span></td><td style='text-align:center;' ><span>1.6463</span></td><td style='text-align:center;' ><span>1.9623</span></td><td style='text-align:center;' ><span>2.3300</span></td><td style='text-align:center;' ><span>2.5807</span></td></tr><tr><td style='text-align:center;' ><span>1040</span></td><td style='text-align:center;' ><span>1.2824</span></td><td style='text-align:center;' ><span>1.6463</span></td><td style='text-align:center;' ><span>1.9622</span></td><td style='text-align:center;' ><span>2.3299</span></td><td style='text-align:center;' ><span>2.5806</span></td></tr><tr><td style='text-align:center;' ><span>1060</span></td><td style='text-align:center;' ><span>1.2824</span></td><td style='text-align:center;' ><span>1.6463</span></td><td style='text-align:center;' ><span>1.9622</span></td><td style='text-align:center;' ><span>2.3299</span></td><td style='text-align:center;' ><span>2.5805</span></td></tr><tr><td style='text-align:center;' ><span>1080</span></td><td style='text-align:center;' ><span>1.2823</span></td><td style='text-align:center;' ><span>1.6463</span></td><td style='text-align:center;' ><span>1.9622</span></td><td style='text-align:center;' ><span>2.3298</span></td><td style='text-align:center;' ><span>2.5804</span></td></tr><tr><td style='text-align:center;' ><span>1100</span></td><td style='text-align:center;' ><span>1.2823</span></td><td style='text-align:center;' ><span>1.6462</span></td><td style='text-align:center;' ><span>1.9621</span></td><td style='text-align:center;' ><span>2.3297</span></td><td style='text-align:center;' ><span>2.5803</span></td></tr><tr><td style='text-align:center;' ><span>1120</span></td><td style='text-align:center;' ><span>1.2823</span></td><td style='text-align:center;' ><span>1.6462</span></td><td style='text-align:center;' ><span>1.9621</span></td><td style='text-align:center;' ><span>2.3297</span></td><td style='text-align:center;' ><span>2.5802</span></td></tr><tr><td style='text-align:center;' ><span>1140</span></td><td style='text-align:center;' ><span>1.2823</span></td><td style='text-align:center;' ><span>1.6462</span></td><td style='text-align:center;' ><span>1.9620</span></td><td style='text-align:center;' ><span>2.3296</span></td><td style='text-align:center;' ><span>2.5801</span></td></tr><tr><td style='text-align:center;' ><span>1160</span></td><td style='text-align:center;' ><span>1.2823</span></td><td style='text-align:center;' ><span>1.6462</span></td><td style='text-align:center;' ><span>1.9620</span></td><td style='text-align:center;' ><span>2.3296</span></td><td style='text-align:center;' ><span>2.5801</span></td></tr><tr><td style='text-align:center;' ><span>1180</span></td><td style='text-align:center;' ><span>1.2823</span></td><td style='text-align:center;' ><span>1.6461</span></td><td style='text-align:center;' ><span>1.9620</span></td><td style='text-align:center;' ><span>2.3295</span></td><td style='text-align:center;' ><span>2.5800</span></td></tr><tr><td style='text-align:center;' ><span>1200</span></td><td style='text-align:center;' ><span>1.2823</span></td><td style='text-align:center;' ><span>1.6461</span></td><td style='text-align:center;' ><span>1.9619</span></td><td style='text-align:center;' ><span>2.3295</span></td><td style='text-align:center;' ><span>2.5799</span></td></tr><tr><td style='text-align:center;' ><span>1220</span></td><td style='text-align:center;' ><span>1.2822</span></td><td style='text-align:center;' ><span>1.6461</span></td><td style='text-align:center;' ><span>1.9619</span></td><td style='text-align:center;' ><span>2.3294</span></td><td style='text-align:center;' ><span>2.5799</span></td></tr><tr><td style='text-align:center;' ><span>1240</span></td><td style='text-align:center;' ><span>1.2822</span></td><td style='text-align:center;' ><span>1.6461</span></td><td style='text-align:center;' ><span>1.9619</span></td><td style='text-align:center;' ><span>2.3294</span></td><td style='text-align:center;' ><span>2.5798</span></td></tr><tr><td style='text-align:center;' ><span>1260</span></td><td style='text-align:center;' ><span>1.2822</span></td><td style='text-align:center;' ><span>1.6461</span></td><td style='text-align:center;' ><span>1.9618</span></td><td style='text-align:center;' ><span>2.3293</span></td><td style='text-align:center;' ><span>2.5797</span></td></tr><tr><td style='text-align:center;' ><span>1280</span></td><td style='text-align:center;' ><span>1.2822</span></td><td style='text-align:center;' ><span>1.6460</span></td><td style='text-align:center;' ><span>1.9618</span></td><td style='text-align:center;' ><span>2.3293</span></td><td style='text-align:center;' ><span>2.5797</span></td></tr><tr><td style='text-align:center;' ><span>Z*</span></td><td style='text-align:center;' ><span>1.2816</span></td><td style='text-align:center;' ><span>1.6449</span></td><td style='text-align:center;' ><span>1.9600</span></td><td style='text-align:center;' ><span>2.3263</span></td><td style='text-align:center;' ><span>2.5758</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td style='text-align:center;' ><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="4.147ex" height="1.824ex" role="img" focusable="false" viewBox="0 -750 1833 806" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.127ex;"><defs><path id="MJX-18-TEX-N-38" d="M70 417T70 494T124 618T248 666Q319 666 374 624T429 515Q429 485 418 459T392 417T361 389T335 371T324 363L338 354Q352 344 366 334T382 323Q457 264 457 174Q457 95 399 37T249 -22Q159 -22 101 29T43 155Q43 263 172 335L154 348Q133 361 127 368Q70 417 70 494ZM286 386L292 390Q298 394 301 396T311 403T323 413T334 425T345 438T355 454T364 471T369 491T371 513Q371 556 342 586T275 624Q268 625 242 625Q201 625 165 599T128 534Q128 511 141 492T167 463T217 431Q224 426 228 424L286 386ZM250 21Q308 21 350 55T392 137Q392 154 387 169T375 194T353 216T330 234T301 253T274 270Q260 279 244 289T218 306L210 311Q204 311 181 294T133 239T107 157Q107 98 150 60T250 21Z"></path><path id="MJX-18-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-18-TEX-N-25" d="M465 605Q428 605 394 614T340 632T319 641Q332 608 332 548Q332 458 293 403T202 347Q145 347 101 402T56 548Q56 637 101 693T202 750Q241 750 272 719Q359 642 464 642Q580 642 650 732Q662 748 668 749Q670 750 673 750Q682 750 688 743T693 726Q178 -47 170 -52Q166 -56 160 -56Q147 -56 142 -45Q137 -36 142 -27Q143 -24 363 304Q469 462 525 546T581 630Q528 605 465 605ZM207 385Q235 385 263 427T292 548Q292 617 267 664T200 712Q193 712 186 709T167 698T147 668T134 615Q132 595 132 548V527Q132 436 165 403Q183 385 203 385H207ZM500 146Q500 234 544 290T647 347Q699 347 737 292T776 146T737 0T646 -56Q590 -56 545 0T500 146ZM651 -18Q679 -18 707 24T736 146Q736 215 711 262T644 309Q637 309 630 306T611 295T591 265T578 212Q577 200 577 146V124Q577 -18 647 -18H651Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><use data-c="38" xlink:href="#MJX-18-TEX-N-38"></use><use data-c="30" xlink:href="#MJX-18-TEX-N-30" transform="translate(500,0)"></use></g><g data-mml-node="mi" transform="translate(1000,0)"><use data-c="25" xlink:href="#MJX-18-TEX-N-25"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>80</mn><mi mathvariant="normal">%</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">80\%</script></td><td style='text-align:center;' ><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="4.147ex" height="1.824ex" role="img" focusable="false" viewBox="0 -750 1833 806" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.127ex;"><defs><path id="MJX-5-TEX-N-39" d="M352 287Q304 211 232 211Q154 211 104 270T44 396Q42 412 42 436V444Q42 537 111 606Q171 666 243 666Q245 666 249 666T257 665H261Q273 665 286 663T323 651T370 619T413 560Q456 472 456 334Q456 194 396 97Q361 41 312 10T208 -22Q147 -22 108 7T68 93T121 149Q143 149 158 135T173 96Q173 78 164 65T148 49T135 44L131 43Q131 41 138 37T164 27T206 22H212Q272 22 313 86Q352 142 352 280V287ZM244 248Q292 248 321 297T351 430Q351 508 343 542Q341 552 337 562T323 588T293 615T246 625Q208 625 181 598Q160 576 154 546T147 441Q147 358 152 329T172 282Q197 248 244 248Z"></path><path id="MJX-5-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-5-TEX-N-25" d="M465 605Q428 605 394 614T340 632T319 641Q332 608 332 548Q332 458 293 403T202 347Q145 347 101 402T56 548Q56 637 101 693T202 750Q241 750 272 719Q359 642 464 642Q580 642 650 732Q662 748 668 749Q670 750 673 750Q682 750 688 743T693 726Q178 -47 170 -52Q166 -56 160 -56Q147 -56 142 -45Q137 -36 142 -27Q143 -24 363 304Q469 462 525 546T581 630Q528 605 465 605ZM207 385Q235 385 263 427T292 548Q292 617 267 664T200 712Q193 712 186 709T167 698T147 668T134 615Q132 595 132 548V527Q132 436 165 403Q183 385 203 385H207ZM500 146Q500 234 544 290T647 347Q699 347 737 292T776 146T737 0T646 -56Q590 -56 545 0T500 146ZM651 -18Q679 -18 707 24T736 146Q736 215 711 262T644 309Q637 309 630 306T611 295T591 265T578 212Q577 200 577 146V124Q577 -18 647 -18H651Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><use data-c="39" xlink:href="#MJX-5-TEX-N-39"></use><use data-c="30" xlink:href="#MJX-5-TEX-N-30" transform="translate(500,0)"></use></g><g data-mml-node="mi" transform="translate(1000,0)"><use data-c="25" xlink:href="#MJX-5-TEX-N-25"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>90</mn><mi mathvariant="normal">%</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">90\%</script></td><td style='text-align:center;' ><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="4.147ex" height="1.824ex" role="img" focusable="false" viewBox="0 -750 1833 806" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.127ex;"><defs><path id="MJX-9-TEX-N-39" d="M352 287Q304 211 232 211Q154 211 104 270T44 396Q42 412 42 436V444Q42 537 111 606Q171 666 243 666Q245 666 249 666T257 665H261Q273 665 286 663T323 651T370 619T413 560Q456 472 456 334Q456 194 396 97Q361 41 312 10T208 -22Q147 -22 108 7T68 93T121 149Q143 149 158 135T173 96Q173 78 164 65T148 49T135 44L131 43Q131 41 138 37T164 27T206 22H212Q272 22 313 86Q352 142 352 280V287ZM244 248Q292 248 321 297T351 430Q351 508 343 542Q341 552 337 562T323 588T293 615T246 625Q208 625 181 598Q160 576 154 546T147 441Q147 358 152 329T172 282Q197 248 244 248Z"></path><path id="MJX-9-TEX-N-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path id="MJX-9-TEX-N-25" d="M465 605Q428 605 394 614T340 632T319 641Q332 608 332 548Q332 458 293 403T202 347Q145 347 101 402T56 548Q56 637 101 693T202 750Q241 750 272 719Q359 642 464 642Q580 642 650 732Q662 748 668 749Q670 750 673 750Q682 750 688 743T693 726Q178 -47 170 -52Q166 -56 160 -56Q147 -56 142 -45Q137 -36 142 -27Q143 -24 363 304Q469 462 525 546T581 630Q528 605 465 605ZM207 385Q235 385 263 427T292 548Q292 617 267 664T200 712Q193 712 186 709T167 698T147 668T134 615Q132 595 132 548V527Q132 436 165 403Q183 385 203 385H207ZM500 146Q500 234 544 290T647 347Q699 347 737 292T776 146T737 0T646 -56Q590 -56 545 0T500 146ZM651 -18Q679 -18 707 24T736 146Q736 215 711 262T644 309Q637 309 630 306T611 295T591 265T578 212Q577 200 577 146V124Q577 -18 647 -18H651Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><use data-c="39" xlink:href="#MJX-9-TEX-N-39"></use><use data-c="35" xlink:href="#MJX-9-TEX-N-35" transform="translate(500,0)"></use></g><g data-mml-node="mi" transform="translate(1000,0)"><use data-c="25" xlink:href="#MJX-9-TEX-N-25"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>95</mn><mi mathvariant="normal">%</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">95\%</script></td><td style='text-align:center;' ><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="4.147ex" height="1.824ex" role="img" focusable="false" viewBox="0 -750 1833 806" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.127ex;"><defs><path id="MJX-13-TEX-N-39" d="M352 287Q304 211 232 211Q154 211 104 270T44 396Q42 412 42 436V444Q42 537 111 606Q171 666 243 666Q245 666 249 666T257 665H261Q273 665 286 663T323 651T370 619T413 560Q456 472 456 334Q456 194 396 97Q361 41 312 10T208 -22Q147 -22 108 7T68 93T121 149Q143 149 158 135T173 96Q173 78 164 65T148 49T135 44L131 43Q131 41 138 37T164 27T206 22H212Q272 22 313 86Q352 142 352 280V287ZM244 248Q292 248 321 297T351 430Q351 508 343 542Q341 552 337 562T323 588T293 615T246 625Q208 625 181 598Q160 576 154 546T147 441Q147 358 152 329T172 282Q197 248 244 248Z"></path><path id="MJX-13-TEX-N-38" d="M70 417T70 494T124 618T248 666Q319 666 374 624T429 515Q429 485 418 459T392 417T361 389T335 371T324 363L338 354Q352 344 366 334T382 323Q457 264 457 174Q457 95 399 37T249 -22Q159 -22 101 29T43 155Q43 263 172 335L154 348Q133 361 127 368Q70 417 70 494ZM286 386L292 390Q298 394 301 396T311 403T323 413T334 425T345 438T355 454T364 471T369 491T371 513Q371 556 342 586T275 624Q268 625 242 625Q201 625 165 599T128 534Q128 511 141 492T167 463T217 431Q224 426 228 424L286 386ZM250 21Q308 21 350 55T392 137Q392 154 387 169T375 194T353 216T330 234T301 253T274 270Q260 279 244 289T218 306L210 311Q204 311 181 294T133 239T107 157Q107 98 150 60T250 21Z"></path><path id="MJX-13-TEX-N-25" d="M465 605Q428 605 394 614T340 632T319 641Q332 608 332 548Q332 458 293 403T202 347Q145 347 101 402T56 548Q56 637 101 693T202 750Q241 750 272 719Q359 642 464 642Q580 642 650 732Q662 748 668 749Q670 750 673 750Q682 750 688 743T693 726Q178 -47 170 -52Q166 -56 160 -56Q147 -56 142 -45Q137 -36 142 -27Q143 -24 363 304Q469 462 525 546T581 630Q528 605 465 605ZM207 385Q235 385 263 427T292 548Q292 617 267 664T200 712Q193 712 186 709T167 698T147 668T134 615Q132 595 132 548V527Q132 436 165 403Q183 385 203 385H207ZM500 146Q500 234 544 290T647 347Q699 347 737 292T776 146T737 0T646 -56Q590 -56 545 0T500 146ZM651 -18Q679 -18 707 24T736 146Q736 215 711 262T644 309Q637 309 630 306T611 295T591 265T578 212Q577 200 577 146V124Q577 -18 647 -18H651Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><use data-c="39" xlink:href="#MJX-13-TEX-N-39"></use><use data-c="38" xlink:href="#MJX-13-TEX-N-38" transform="translate(500,0)"></use></g><g data-mml-node="mi" transform="translate(1000,0)"><use data-c="25" xlink:href="#MJX-13-TEX-N-25"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>98</mn><mi mathvariant="normal">%</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">98\%</script></td><td style='text-align:center;' ><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="4.147ex" height="1.824ex" role="img" focusable="false" viewBox="0 -750 1833 806" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.127ex;"><defs><path id="MJX-17-TEX-N-39" d="M352 287Q304 211 232 211Q154 211 104 270T44 396Q42 412 42 436V444Q42 537 111 606Q171 666 243 666Q245 666 249 666T257 665H261Q273 665 286 663T323 651T370 619T413 560Q456 472 456 334Q456 194 396 97Q361 41 312 10T208 -22Q147 -22 108 7T68 93T121 149Q143 149 158 135T173 96Q173 78 164 65T148 49T135 44L131 43Q131 41 138 37T164 27T206 22H212Q272 22 313 86Q352 142 352 280V287ZM244 248Q292 248 321 297T351 430Q351 508 343 542Q341 552 337 562T323 588T293 615T246 625Q208 625 181 598Q160 576 154 546T147 441Q147 358 152 329T172 282Q197 248 244 248Z"></path><path id="MJX-17-TEX-N-25" d="M465 605Q428 605 394 614T340 632T319 641Q332 608 332 548Q332 458 293 403T202 347Q145 347 101 402T56 548Q56 637 101 693T202 750Q241 750 272 719Q359 642 464 642Q580 642 650 732Q662 748 668 749Q670 750 673 750Q682 750 688 743T693 726Q178 -47 170 -52Q166 -56 160 -56Q147 -56 142 -45Q137 -36 142 -27Q143 -24 363 304Q469 462 525 546T581 630Q528 605 465 605ZM207 385Q235 385 263 427T292 548Q292 617 267 664T200 712Q193 712 186 709T167 698T147 668T134 615Q132 595 132 548V527Q132 436 165 403Q183 385 203 385H207ZM500 146Q500 234 544 290T647 347Q699 347 737 292T776 146T737 0T646 -56Q590 -56 545 0T500 146ZM651 -18Q679 -18 707 24T736 146Q736 215 711 262T644 309Q637 309 630 306T611 295T591 265T578 212Q577 200 577 146V124Q577 -18 647 -18H651Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><use data-c="39" xlink:href="#MJX-17-TEX-N-39"></use><use data-c="39" xlink:href="#MJX-17-TEX-N-39" transform="translate(500,0)"></use></g><g data-mml-node="mi" transform="translate(1000,0)"><use data-c="25" xlink:href="#MJX-17-TEX-N-25"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>99</mn><mi mathvariant="normal">%</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">99\%</script></td></tr></tbody></table></figure><p><span> 这东西还挺难找的</span></p></div></div>
+</body>
+</html>

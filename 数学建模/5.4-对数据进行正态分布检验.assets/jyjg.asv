@@ -1,0 +1,6 @@
+load 'physical fitness test.mat' % 加载 Test 变量，作为女生体测数据
+size(Test) % 519    6
+
+% 通过循环进行 JB 检验
+% 先获取列数
+r_num = size(test
